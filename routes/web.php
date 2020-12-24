@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'showWelcomePage'])->name('welcome');
 
+Route::get('authorization','Auth\LoginController@authorization')->name('authorization');
+
+Route::get('categories/{title}-{id}/products','CategoryProductController@showProducts')->name('categories.products.show');
+
+Route::get('products/{title}-{id}','ProductController@showProduct')->name('products.show');
+
 Auth::routes(['register' => false ,'reset' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

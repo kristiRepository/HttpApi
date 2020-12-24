@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    
-    public function showWelcomePage(){
 
-        return view('welcome');
+    public function showWelcomePage()
+    {
+        $products = $this->marketService->getProducts();
+        $categories = $this->marketService->getCategories();
+
+        return view('welcome')->with([
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 }
